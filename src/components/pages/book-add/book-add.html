@@ -1,0 +1,47 @@
+<a routerLink="/books">Go Back</a>
+
+<h1>Add book</h1>
+
+
+<div class="m-auto w-50 text-center rounded border">
+
+    <div class="m-1">
+        <label for="">Title</label>
+        <br>
+        <input type="text" [(ngModel)]="newBook.title">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Author</label>
+        <br>
+        <input type="text" [(ngModel)]="newBook.Author">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Description</label>
+        <br>
+        <input type="text" [(ngModel)]="newBook.description">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Price</label>
+        <br>
+        <input type="number" [(ngModel)]="newBook.price">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Genre</label>
+        <br>
+        <input type="text" [(ngModel)]="newBook.genre">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Image URL</label>
+        <br>
+        <input type="text" [(ngModel)]="newBook.coverImageUrl">
+        <img [src]="newBook.coverImageUrl" [alt]="newBook.title" width="100">
+    </div>
+
+    <button class="btn m-2" (click)="addBook()">Add book</button>
+
+</div>

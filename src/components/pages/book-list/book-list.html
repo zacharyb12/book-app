@@ -1,0 +1,32 @@
+<a routerLink="">Go Home</a>
+
+<h1>Book List</h1>
+
+
+<div>
+    <ul class="border p-1 rounded list-unstyled">
+
+        @for(b of books;track b){
+        <li class=" border rounded shadow m-2" HoverBorder>
+            <div class="d-flex">
+                <div class="p-1">
+                    <h4>{{b.title}}</h4>
+                    <p>{{b.Author}}</p>
+                    <p>{{b.description}}</p>
+                    <p>{{b.price}}</p>
+                    <p>{{b.genre}}</p>
+                    <p>{{b.DateRelease | date : 'dd/MM/yyyy'}}</p>
+                </div>
+                <div class="p-1">
+                    <img class="m-auto" [src]="b.coverImageUrl" [alt]="b.title" width="100">
+                </div>
+            </div>
+            <div>
+                <button class="btn m-1" (click)="navigateToDetails(b.id)">details</button>
+                <button class="btn m-1" (click)="navigateToUpdate(b.id)">update</button>
+            </div>
+        </li>    
+        }
+
+    </ul>
+</div>

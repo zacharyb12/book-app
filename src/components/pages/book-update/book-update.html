@@ -1,0 +1,53 @@
+<!-- {{book?.title}} -->
+<a routerLink="/books">Go Back</a>
+@if(book){
+    <h1>Edit book : {{book.id}}</h1>
+
+
+<div class="m-auto w-50 text-center rounded border">
+
+    <div class="m-1">
+        <label for="">Title</label>
+        <br>
+        <input type="text" [(ngModel)]="book.title">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Author</label>
+        <br>
+        <input type="text" [(ngModel)]="book.Author">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Description</label>
+        <br>
+        <input type="text" [(ngModel)]="book.description">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Price</label>
+        <br>
+        <input type="number" [(ngModel)]="book.price">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Genre</label>
+        <br>
+        <input type="text" [(ngModel)]="book.genre">
+    </div>
+    
+    <div class="m-1">
+        <label for="">Image URL</label>
+        <br>
+        <input type="text" [(ngModel)]="book.coverImageUrl">
+        <img [src]="book.coverImageUrl" [alt]="book.title" width="100">
+    </div>
+
+    <button class="btn m-2" (click)="updateBook()">Update book</button>
+    <button class="btn-danger m-2" (click)="deleteBook(book.id)">Delete book</button>
+
+</div>
+}
+@else {
+    <h1>Book not found</h1>
+}

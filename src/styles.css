@@ -1,1 +1,133 @@
 /* You can add global styles to this file, and also import other style files */
+
+.d-flex {
+    display: flex;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+.m-2 {
+    margin: 2rem;
+}
+.m-3 {
+    margin: 3rem;
+}
+
+.mt-1{
+    margin-top: 1rem;
+}
+
+.mt-2{
+    margin-top: 2rem;
+}
+
+.mt-3{
+    margin-top: 3rem;
+}
+
+.mt-4{
+    margin-top: 4rem;
+}
+
+.mt-5{
+    margin-top: 5rem;
+}
+
+.mb-1{
+    margin-bottom: 1rem;
+}
+
+.mb-2{
+    margin-bottom: 2rem;
+}
+
+.mb-3{
+    margin-bottom: 3rem;
+}
+
+.p-1 {
+    padding: 1rem;
+}
+
+.p-2 {
+    padding: 2rem;
+}
+
+.p-3 {
+    padding: 3rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.rounded{
+    border-radius: 10px;
+}
+
+.shadow{
+    box-shadow: 10px 10px 10px rgba(20, 20, 20, 0.493);
+}
+
+.border {
+    border: 1px solid black;
+}
+
+.justify-evenly{
+    justify-content: space-evenly;
+}
+
+.list-unstyled{
+    list-style: none;
+}
+
+
+button{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.btn:hover{
+    background-color: rgb(24, 76, 249);
+    color: rgb(255, 255, 255);
+    border: 2px solid blue;
+}
+
+.btn-danger{
+    border: 2px solid rgb(255, 0, 0);
+    border: 2px solid darkred;
+}
+
+.btn-danger:hover{
+    background-color: red;
+    color: white;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.w-75{
+    width: 75%;
+}
+
+.w-50{
+    width: 50%;
+}
+
+.w-25{
+    width: 25%;
+}
+
+
+.border-hover:hover{
+    border: 4px solid rgba(0, 0, 255, 0.334);
+    transform: scale(1.05);
+}
