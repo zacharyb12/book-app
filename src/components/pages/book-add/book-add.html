@@ -2,7 +2,7 @@
 
 <h1>Add book</h1>
 
-
+<!-- 
 <div class="m-auto w-50 text-center rounded border">
 
     <div class="m-1">
@@ -44,4 +44,90 @@
 
     <button class="btn m-2" (click)="addBook()">Add book</button>
 
-</div>
+</div> -->
+
+<form class="w-50 m-auto p-2 border shadow rounded text-center" [formGroup]="monForm" (ngSubmit)="addBook()">
+
+    <div>
+        <label for="">Title</label>
+        <br>
+        <input type="text" formControlName="title">
+        @if(isSubmitted){
+
+            @if(monForm.get('title')?.errors?.['required'] && monForm.get('title')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Title is required</p>
+            }
+        }
+    </div>
+    
+    <div>
+        <label for="">Author</label>
+        <br>
+        <input type="text" formControlName="Author">
+        @if(isSubmitted){
+            
+            @if(monForm.get('Author')?.errors?.['required'] && monForm.get('Author')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Author is required</p>
+            }
+        }
+    </div>
+    
+    <div>
+        <label for="">Description</label>
+        <br>
+        <input type="text" formControlName="description">
+        <br>
+        @if(isSubmitted){
+            
+            @if(monForm.get('description')?.errors?.['required'] && monForm.get('description')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Description is required</p>
+            }
+        }
+    </div>
+    
+    <div>
+        <label for="">Price</label>
+        <br>
+        <input type="number" formControlName="price">
+        @if(isSubmitted){
+            
+            @if(monForm.get('price')?.errors?.['required'] && monForm.get('price')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Price is required</p>
+            }
+
+            @if(monForm.get('price')?.errors?.['min'] && monForm.get('price')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Price should be positive</p>
+            }
+        }
+    </div>
+    
+    <div>
+        <label for="">Genre</label>
+        <br>
+        <input type="text" formControlName="genre">
+        @if(isSubmitted){
+            
+            @if(monForm.get('genre')?.errors?.['required'] && monForm.get('genre')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Genre is required</p>
+            }
+        }
+    </div>
+    
+    <div>
+        <label for="">Cover Image URL</label>
+        <br>
+        <input type="text" formControlName="coverImageUrl">
+@if(monForm.value.coverImageUrl){
+    <img [src]="monForm.value.coverImageUrl" [alt]="monForm.value.title" width="100">
+}
+
+        @if(isSubmitted){
+
+            @if(monForm.get('coverImageUrl')?.errors?.['required'] && monForm.get('coverImageUrl')?.touched){
+                <p [ngStyle]="{'color' : 'red'}">Image is required</p>
+            }
+        }
+    </div>
+
+    <button class="m-2" type="submit">Add Book</button>
+</form>
