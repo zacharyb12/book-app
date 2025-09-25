@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../../../core/models/book.model';
 import { ServiceBook } from '../../../core/services/book-service/service-book';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -48,6 +48,9 @@ constructor(){
   
   if(result){
     this.book = result;
+    console.log("book : " + this.book.Author);
+    console.log("book : " + this.book.genre);
+    
   }
   else{
     // si aucun livre n'est trouve, redirection vers la liste des livres
@@ -56,16 +59,19 @@ constructor(){
 
   this.monForm = this.fb.group({
     title: ['' , [Validators.required]],
-    Author: ['', [Validators.required]],
+    Author: this.fb.array([]),
     description: ['', [Validators.required]],
     price: [0, [Validators.required , Validators.min(0)]],
-    genre: ['', [Validators.required]],
+    genre: this.fb.array([]),
     coverImageUrl: ['', []]
   })
 
   if(this.book){
     this.monForm.patchValue(this.book)
   }
+
+  this.initFormAuthors();
+  this.initFormGenres();
 }
 
 updateBook(){
@@ -94,6 +100,47 @@ deleteBook(id : number){
   this.bookService.deleteBook(id);
   this.router.navigate(['/books']);
 
+}
+
+// acceder au FormArray Author
+get Authors() : FormArray{
+  return this.monForm.get('Author') as FormArray;
+}
+
+// ajouter un formControl dans le FormArray Author
+addAuthorInput(){
+  this.Authors.push(new FormControl('', Validators.required));
+}
+
+// suppression d'un formControl dans le FormArray Author
+removeAuthorInput(index : number): void {
+  this.Authors.removeAt(index);
+}
+
+// acceder au FormArray Genre
+get Genres(): FormArray {
+  return this.monForm.get('genre') as FormArray;
+}
+// ajouter un formControl dans le FormArray Genre
+addGenreInput(){
+  this.Genres.push(new FormControl('', Validators.required));
+}
+
+// suppression d'un formControl dans le FormArray Genre
+removeGenreInput(index : number): void {
+  this.Genres.removeAt(index);
+}
+
+initFormAuthors(){
+  this.book?.Author.forEach(author => {
+    this.Authors.push(new FormControl(author,[Validators.required]));
+  })
+}
+
+initFormGenres(){
+  this.book?.genre.forEach(genre => {
+    this.Genres.push(new FormControl(genre, [Validators.required]))
+  })
 }
 
 }

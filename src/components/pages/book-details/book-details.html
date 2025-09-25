@@ -5,10 +5,16 @@
 
     <div>
         <p>{{book.description}}</p>
-        <p>Author : {{book.Author}}</p>
+        @for(author of book.Author;track author){
+
+            <p> {{author}}</p>
+        }
         <p>Price : {{book.price}} €</p>
         <p>Release date : {{book.DateRelease | date : 'dd/MM/yyyy'}}</p>
-        <p>Genre : {{book.genre}}</p>
+        @for(genre of book.genre;track genre){
+
+            <p>Genre : {{genre}}</p>
+        }
     </div>
 
     <div>

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AddBook } from '../../../core/models/add-book.model';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ServiceBook } from '../../../core/services/book-service/service-book';
 import { Router, RouterLink } from '@angular/router';
 import { NgStyle } from '@angular/common';
@@ -43,10 +43,10 @@ constructor() {
   // 3 Initialisation du FormGroup
   this.monForm = this.fb.group({
     title: ['' , [Validators.required]],
-    Author: ['', [Validators.required]],
+    Author:this.fb.array([new FormControl('', Validators.required)]),
     description: ['', [Validators.required]],
     price: [0, [Validators.required , Validators.min(0)]],
-    genre: ['', [Validators.required]],
+    genre: this.fb.array([new FormControl('', Validators.required)]),
     coverImageUrl: ['', []]
   })
 }
@@ -85,6 +85,39 @@ console.log(this.monForm.value);
   this.isSubmitted = true;
   this.monForm.markAllAsTouched();
 }
+}
+
+
+// acceder au formArray Authors
+get Authors() : FormArray {
+  return this.monForm.get('Author') as FormArray;
+}
+
+
+// acceder au formArray genre
+get Genres() : FormArray {
+return this.monForm.get('genre') as FormArray
+}
+
+// ajouter un formControl dans le formArray Author
+addAuthorInput(): void {
+  this.Authors.push(new FormControl('', Validators.required));
+}
+
+// suppression d'un formControl dans le formArray Author
+removeAuthorInput(index : number):void {
+  this.Authors.removeAt(index);
+
+}
+
+// ajouter un formControl dans le formArray genre
+addGenreInput():void {
+  this.Genres.push(new FormControl('', Validators.required));
+}
+
+// suppression d'un formControl dans le formArray genre
+removeGenreInput(index : number) : void{
+  this.Genres.removeAt(index);
 }
 
 

@@ -11,10 +11,18 @@
             <div class="d-flex">
                 <div class="p-1">
                     <h4>{{b.title}}</h4>
-                    <p>{{b.Author}}</p>
+                    <div class="border rounded p-1 mb-1">
+                    @for(author of b.Author; track author){
+
+                        <p>{{author}}</p>
+                    }
+                    </div>
+                    
                     <p>{{b.description}}</p>
                     <p>{{b.price}}</p>
-                    <p>{{b.genre}}</p>
+                    @for(genre of b.genre;track genre){
+                        <p>{{genre}}</p>
+                    }
                     <p>{{b.DateRelease | date : 'dd/MM/yyyy'}}</p>
                 </div>
                 <div class="p-1">
