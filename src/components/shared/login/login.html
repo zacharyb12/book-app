@@ -1,0 +1,25 @@
+<div class="card border rounded p-3 m-3 z-hover top-right bg-white">
+@if(!isLoggedLogin()){
+
+    <form [formGroup]="monForm" (ngSubmit)="login()">
+        
+        <div>
+            <label for="">Email</label>
+            <br>
+            <input type="text" formControlName="email">
+        </div>
+        
+        <div>
+            <label for="">Password</label>
+        <br>
+        <input type="password" formControlName="password">
+    </div>
+    
+    <button type="submit">Login</button>
+</form>
+}
+@else{   
+    <button (click)="logout()">logout</button>
+}
+
+</div>

@@ -131,3 +131,16 @@ button{
     border: 4px solid rgba(0, 0, 255, 0.334);
     transform: scale(1.05);
 }
+
+.z-hover{
+    z-index: 1;
+}
+
+.top-right{
+    position: absolute;
+top: 0;
+}
+
+.bg-white{
+    background-color: white;
+}

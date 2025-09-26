@@ -31,7 +31,9 @@
             </div>
             <div>
                 <button class="btn m-1" (click)="navigateToDetails(b.id)">details</button>
-                <button class="btn m-1" (click)="navigateToUpdate(b.id)">update</button>
+                @if(isAdminBookList()){
+                    <button class="btn m-1" (click)="navigateToUpdate(b.id)">update</button>
+                }
             </div>
         </li>    
         }

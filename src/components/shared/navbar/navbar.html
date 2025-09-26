@@ -5,8 +5,15 @@
             <a class="btn" routerLink="/books">Books</a>
         </li>
 
+        @if(isAdminNavbar()){
+
+            <li>
+                <a class="btn" routerLink="/book-add">Add Book</a>
+            </li>
+        }
+
         <li>
-            <a class="btn" routerLink="/book-add">Add Book</a>
+            <app-login></app-login>
         </li>
         
     </ul>
